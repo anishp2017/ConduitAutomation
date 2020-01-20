@@ -14,3 +14,10 @@ Scenario: Verify Sign in page
 	And I should see a field to input email address
 	And I should see a field to input password
 	And I should see a "Sign in" button
+
+Scenario: Verify that sign in works
+	Given I am on the sign in page
+	When I enter "QAUser1@gmail.com" for email
+	And I enter "test" for password
+	And I click the Sign in button
+	Then I will be redirected to the home page

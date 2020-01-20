@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using ConduitAutomation.PageObjectModels;
 using FluentAssertions;
+using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
 
 namespace ConduitAutomation.Steps
@@ -80,6 +82,33 @@ namespace ConduitAutomation.Steps
         public void ThenIShouldSeeAButton(string signIn)
         {
             _signInPage.SignInButton.Text.Should().Be(signIn);
+        }
+
+        [When(@"I enter ""(.*)"" for email")]
+        public void WhenIEnterForEmail(string email)
+        {
+            _signInPage.EnterDataIntoField(_signInPage.EmailInput, email);
+        }
+
+        [When(@"I enter ""(.*)"" for password")]
+        public void WhenIEnterForPassword(string password)
+        {
+            _signInPage.EnterDataIntoField(_signInPage.PasswordInput, password);
+        }
+
+        [When(@"I click the Sign in button")]
+        public void WhenIClickTheSignInButton()
+        {
+            _signInPage.SignInButton.Click();
+        }
+
+        [Then(@"I will be redirected to the home page")]
+        public void ThenIWillBeRedirectedToTheHomePage()
+        {
+            var expectedHomePageUrl = $"{_settingsUtility.BaseUrl}/";
+            new WebDriverWait(_driver, TimeSpan.FromSeconds(2)).Until(ExpectedConditions.UrlToBe(expectedHomePageUrl));
+
+            _driver.Url.Should().Be(expectedHomePageUrl);
         }
     }
 }

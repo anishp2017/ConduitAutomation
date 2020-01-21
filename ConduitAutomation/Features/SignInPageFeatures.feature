@@ -21,3 +21,4 @@ Scenario: Verify that sign in works
 	And I enter "test" for password
 	And I click the Sign in button
 	Then I will be redirected to the home page
+	And I should see the links "Home| New Post| Settings|QAUser1" on the right side of the navigation bar for Sign In page

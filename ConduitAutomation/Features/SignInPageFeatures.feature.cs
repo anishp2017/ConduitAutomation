@@ -176,6 +176,10 @@ this.ScenarioInitialize(scenarioInfo);
 #line 23
  testRunner.Then("I will be redirected to the home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 24
+ testRunner.And("I should see the links \"Home| New Post| Settings|QAUser1\" on the right side of th" +
+                        "e navigation bar for Sign In page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

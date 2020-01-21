@@ -2,6 +2,7 @@
 using System.Reflection;
 using ConduitAutomation.PageObjectModels;
 using FluentAssertions;
+using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
 
 namespace ConduitAutomation.Steps
@@ -81,6 +82,15 @@ namespace ConduitAutomation.Steps
         public void ThenIShouldSeeArticlePreview()
         {
             _homePage.ArticlePreviews.Count.Should().BeGreaterThan(0);
+        }
+
+        [Given(@"I am signed in with email ""(.*)"" and password ""(.*)""")]
+        public void GivenIAmSignedInWithEmailAndPassword(string email, string password)
+        {
+            _homePage.SignIn.Click();
+            new WebDriverWait(_driver, TimeSpan.FromSeconds(2)).Until(ExpectedConditions.UrlToBe($"{_settingsUtility.SignInRoute}/"));
+
+
         }
 
     }

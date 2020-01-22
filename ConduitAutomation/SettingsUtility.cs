@@ -17,6 +17,7 @@ namespace ConduitAutomation
                 public const string IsHeadless = "isHeadless";
                 public const string BaseUrl = "baseUrl";
                 public const string SignInRoute = "signInRoute";
+                public const string ArticleRoute = "articleRoute";
                 public const string TakeScreenshot = "takeScreenshot";
             }
 
@@ -24,9 +25,10 @@ namespace ConduitAutomation
             {
                 public const string Environment = "local";
                 public const string Browser = "chrome";
-                public const string IsHeadless = "true";
+                public const string IsHeadless = "false";
                 public const string BaseUrl = "http://localhost:4100";
                 public const string SignInRoute = "/login";
+                public const string ArticleRoute = "/article";
                 public const string TakeScreenshot = "true";
             }
         }
@@ -37,6 +39,7 @@ namespace ConduitAutomation
         public bool TakeScreenshot { get; set; }
         public string BaseUrl { get; set; }
         public string SignInRoute { get; set; }
+        public string ArticleRoute { get; set; }
 
         public SettingsUtility()
         {
@@ -54,7 +57,8 @@ namespace ConduitAutomation
                     new JProperty(Constants.Keys.IsHeadless, Constants.DefaultValues.IsHeadless),
                     new JProperty(Constants.Keys.TakeScreenshot, Constants.DefaultValues.TakeScreenshot),
                     new JProperty(Constants.Keys.BaseUrl, Constants.DefaultValues.BaseUrl),
-                    new JProperty(Constants.Keys.SignInRoute, Constants.DefaultValues.SignInRoute)
+                    new JProperty(Constants.Keys.SignInRoute, Constants.DefaultValues.SignInRoute),
+                    new JProperty(Constants.Keys.ArticleRoute, Constants.DefaultValues.ArticleRoute)
                     );
 
                 File.WriteAllText(Constants.SettingsFilePath, settingsJObject.ToString());
@@ -81,6 +85,7 @@ namespace ConduitAutomation
 
             BaseUrl = GetSettingValue(settingsJObject, Constants.Keys.BaseUrl).ToString();
             SignInRoute = GetSettingValue(settingsJObject, Constants.Keys.SignInRoute).ToString();
+            ArticleRoute = GetSettingValue(settingsJObject, Constants.Keys.ArticleRoute).ToString();
         }
 
         public JObject ReadSettingsFile()

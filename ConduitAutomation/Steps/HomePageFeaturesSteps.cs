@@ -16,12 +16,6 @@ namespace ConduitAutomation.Steps
         {
         }
 
-        [Given(@"I am not signed in")]
-        public void GivenIAmNotSignedIn()
-        {
-            _homePage.IsWebElementPresent(_homePage.SignIn).Should().BeTrue();
-        }
-        
         [Given(@"I am on the home page")]
         public void GivenIAmOnTheHomePage()
         {
@@ -82,15 +76,6 @@ namespace ConduitAutomation.Steps
         public void ThenIShouldSeeArticlePreview()
         {
             _homePage.ArticlePreviews.Count.Should().BeGreaterThan(0);
-        }
-
-        [Given(@"I am signed in with email ""(.*)"" and password ""(.*)""")]
-        public void GivenIAmSignedInWithEmailAndPassword(string email, string password)
-        {
-            _homePage.SignIn.Click();
-            new WebDriverWait(_driver, TimeSpan.FromSeconds(2)).Until(ExpectedConditions.UrlToBe($"{_settingsUtility.SignInRoute}/"));
-
-
         }
 
     }

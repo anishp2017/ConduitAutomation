@@ -10,6 +10,8 @@ namespace ConduitAutomation
         bool TakeScreenshot { get; set; }
         string BaseUrl { get; set; }
         string SignInRoute { get; set; }
+        string ArticleRoute { get; set; }
+
 
         void CreateSettingsFileIfNotExists();
         void InitializeSettings();

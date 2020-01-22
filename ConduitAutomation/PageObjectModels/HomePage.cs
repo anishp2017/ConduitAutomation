@@ -21,6 +21,8 @@ namespace ConduitAutomation.PageObjectModels
 
         public IList<IWebElement> ArticlePreviews => _driver.FindElements(By.XPath("//div[contains(@class,'article-preview')]"));
 
+        public IList<IWebElement> ArticlePreviewLinks => _driver.FindElements(By.XPath("//div[contains(@class,'article-preview')]//a[contains(@class,'preview-link')]"));
+
         public HomePage(IWebDriver driver, ISettingsUtility settingsUtility) : base(driver, settingsUtility)
         {
         }
@@ -30,6 +32,12 @@ namespace ConduitAutomation.PageObjectModels
             var url = Util.BuildUriString(settingsUtility.BaseUrl, "/");
             driver.Navigate().GoToUrl(url);
             return new HomePage(driver, settingsUtility);
+        }
+
+        public IWebElement GetArticlePreviewLink(string articleName)
+        {
+            return _driver.FindElement(By.XPath($"//div[contains(@class,'article-preview')]//a[contains(@class,'preview-link')]//h1[text()='{articleName}']"));
+
         }
     }
 }

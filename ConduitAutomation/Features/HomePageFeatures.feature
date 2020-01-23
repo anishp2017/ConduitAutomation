@@ -16,3 +16,9 @@ Scenario: Verify article list
 	And There is at least one article in the system
 	Then I should see "Global Feed" tab
 	And I should see article preview
+
+Scenario: Verify that clicking a tag shows only articles with that tag
+	Given I am on the home page
+	And There is at least one article in the system having tag "test"
+	When I click the "test" tag
+	Then I should see article previews for articles having tag "test"

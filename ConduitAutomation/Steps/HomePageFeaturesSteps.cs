@@ -2,6 +2,7 @@
 using System.Reflection;
 using ConduitAutomation.PageObjectModels;
 using FluentAssertions;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
 
@@ -76,6 +77,31 @@ namespace ConduitAutomation.Steps
         public void ThenIShouldSeeArticlePreview()
         {
             _homePage.ArticlePreviews.Count.Should().BeGreaterThan(0);
+        }
+
+        [Given(@"There is at least one article in the system having tag ""(.*)""")]
+        public void GivenThereIsAtLeastOneArticleInTheSystemHavingTag(string tag)
+        {
+            // TODO: should call api and get count of articles with above tag
+            return;
+        }
+
+        [When(@"I click the ""(.*)"" tag")]
+        public void WhenIClickTheTag(string tag)
+        {
+            var tagLink = _homePage.GetTagLink(tag);
+            tagLink.Click();
+        }
+
+        [Then(@"I should see article previews for articles having tag ""(.*)""")]
+        public void ThenIShouldSeeArticlePreviewsForArticlesHavingTag(string tag)
+        {
+            _homePage.WaitUntilPresenceOfAllElementsLocatedBy(By.XPath($"//div[contains(@class,'feed-toggle')]//a[contains(@class,'nav-link active') and text()='{tag}']"), 2);
+            _homePage.IsWebElementPresent(_homePage.GetArticlesTabForTag(tag)).Should().BeTrue();
+            foreach (var articlePreviewLinkTag in _homePage.GetArticlePreviewLinkTags(tag))
+            {
+                articlePreviewLinkTag.Text.Should().Be(tag);
+            }
         }
 
     }

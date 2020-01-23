@@ -23,6 +23,9 @@ namespace ConduitAutomation.PageObjectModels
 
         public IList<IWebElement> ArticlePreviewLinks => _driver.FindElements(By.XPath("//div[contains(@class,'article-preview')]//a[contains(@class,'preview-link')]"));
 
+        public IList<IWebElement> TagLinks => _driver.FindElements(By.XPath("//div[contains(@class,'tag-list')]//a[contains(@class,'tag-default tag-pill')]"));
+
+
         public HomePage(IWebDriver driver, ISettingsUtility settingsUtility) : base(driver, settingsUtility)
         {
         }
@@ -37,7 +40,21 @@ namespace ConduitAutomation.PageObjectModels
         public IWebElement GetArticlePreviewLink(string articleName)
         {
             return _driver.FindElement(By.XPath($"//div[contains(@class,'article-preview')]//a[contains(@class,'preview-link')]//h1[text()='{articleName}']"));
+        }
 
+        public IList<IWebElement> GetArticlePreviewLinkTags(string tag)
+        {
+            return _driver.FindElements(By.XPath($"//div[contains(@class,'article-preview')]//a[contains(@class,'preview-link')]//li[text()='{tag}']"));
+        }
+
+        public IWebElement GetTagLink(string tag)
+        {
+            return _driver.FindElement(By.XPath($"//div[contains(@class,'tag-list')]//a[contains(@class,'tag-default tag-pill') and text()='{tag}']"));
+        }
+
+        public IWebElement GetArticlesTabForTag(string tag)
+        {
+            return _driver.FindElement(By.XPath($"//div[contains(@class,'feed-toggle')]//a[contains(@class,'nav-link active') and text()='{tag}']"));
         }
     }
 }

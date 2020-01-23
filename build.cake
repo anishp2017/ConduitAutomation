@@ -51,9 +51,9 @@ Task("Run-Tests")
 
 // task targets
 Task("Default")
-    // .IsDependentOn("Clean")
-    // .IsDependentOn("Restore-NuGet-Packages")
-    // .IsDependentOn("Build")
+    .IsDependentOn("Clean")
+    .IsDependentOn("Restore-NuGet-Packages")
+    .IsDependentOn("Build")
     .IsDependentOn("Run-Tests");
 
 // execution

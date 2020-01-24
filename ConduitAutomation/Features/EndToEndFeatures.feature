@@ -1,7 +1,7 @@
 ﻿Feature: EndToEndFeatures
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+	In order to verify the application
+	As a QA Tester
+	I want to ensure that all functionality behaves correctly
 
 @end2end
 Scenario: Verify article page when clicking on an article

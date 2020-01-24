@@ -16,7 +16,6 @@ namespace ConduitAutomation.PageObjectModels
         {
             _driver = driver;
             _settingsUtility = settingsUtility;
-            //_pageUri = Util.BuildUriString(_settingsUtility.BaseUrl, _settingsUtility.WindowTreatmentsRouteNew);
         }
 
         public bool IsWebElementPresent(IWebElement webElement)
@@ -123,14 +122,6 @@ namespace ConduitAutomation.PageObjectModels
                 Reporter.Fail("EnterDataIntoField", "Webelement is not found : " + Wde.InnerException);
             }
         }
-
-        protected class Design
-        {
-            public string Name { get; set; }
-            public string Price { get; set; }
-            public int NumberOfLineItems { get; set; }
-        }
-
 
         public bool TryFindElement(IWebElement parentElement, By by, out IWebElement ChildElement)
         {

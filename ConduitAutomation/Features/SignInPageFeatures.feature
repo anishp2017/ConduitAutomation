@@ -1,9 +1,9 @@
 ﻿Feature: SignInPageFeatures
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+	In order to personalize my experience
+	As a user
+	I want to sign in to the application
 
-@mytag
+@smoke
 Scenario: Verify Sign in page
 	Given I am on the sign in page
 	Then I should see the navigation bar at the top of the page for Sign In page
@@ -15,6 +15,7 @@ Scenario: Verify Sign in page
 	And I should see a field to input password
 	And I should see a "Sign in" button
 
+@regression
 Scenario: Verify that sign in works
 	Given I am on the sign in page
 	When I enter "QAUser1@gmail.com" for email

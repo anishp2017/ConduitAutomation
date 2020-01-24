@@ -35,8 +35,8 @@ namespace ConduitAutomation.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SignInPageFeatures", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SignInPageFeatures", "\tIn order to personalize my experience\r\n\tAs a user\r\n\tI want to sign in to the app" +
+                    "lication", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,13 +76,13 @@ namespace ConduitAutomation.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify Sign in page")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.CategoryAttribute("smoke")]
         public virtual void VerifySignInPage()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "smoke"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Sign in page", null, new string[] {
-                        "mytag"});
+                        "smoke"});
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -137,11 +137,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify that sign in works")]
+        [NUnit.Framework.CategoryAttribute("regression")]
         public virtual void VerifyThatSignInWorks()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify that sign in works", null, ((string[])(null)));
-#line 18
+            string[] tagsOfScenario = new string[] {
+                    "regression"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify that sign in works", null, new string[] {
+                        "regression"});
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -161,22 +164,22 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 19
+#line 20
  testRunner.Given("I am on the sign in page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 21
  testRunner.When("I enter \"QAUser1@gmail.com\" for email", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 22
  testRunner.And("I enter \"test\" for password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 22
+#line 23
  testRunner.And("I click the Sign in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 23
+#line 24
  testRunner.Then("I will be redirected to the home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 24
+#line 25
  testRunner.And("I should see the links \"Home| New Post| Settings|QAUser1\" on the right side of th" +
                         "e navigation bar for Sign In page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

@@ -12,6 +12,7 @@ namespace ConduitAutomation.Steps
     {
         HomePage _homePage;
         SignInPage _signInPage;
+        ConduitApiClient _conduitApiClient;
 
         public EndToEndFeaturesSteps(ScenarioContext scenarioContext, FeatureContext featureContext) : base(scenarioContext, featureContext)
         {
@@ -35,10 +36,11 @@ namespace ConduitAutomation.Steps
         }
 
         [Given(@"The article ""(.*)"" exists in the system")]
-        public void GivenTheArticleExistsInTheSystem(string articleName)
+        public async void GivenTheArticleExistsInTheSystem(string slug)
         {
-            // TODO: should call api to get article
-            return;
+            _conduitApiClient = new ConduitApiClient();
+            var article = await _conduitApiClient.GetArticle(slug);
+            article.Slug.Should().Be(slug);
         }
 
         [When(@"I click the preview link for article ""(.*)""")]

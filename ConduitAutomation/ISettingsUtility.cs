@@ -10,6 +10,7 @@ namespace ConduitAutomation
         bool TakeScreenshot { get; set; }
         string BaseUrl { get; set; }
         string SignInRoute { get; set; }
+        string SignUpRoute { get; set; }
         string ArticleRoute { get; set; }
 
 

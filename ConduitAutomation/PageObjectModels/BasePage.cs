@@ -158,7 +158,5 @@ namespace ConduitAutomation.PageObjectModels
                 return false;
             }
         }
-
-
     }
 }

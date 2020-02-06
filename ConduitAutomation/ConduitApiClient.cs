@@ -17,5 +17,13 @@ namespace ConduitAutomation
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return JsonConvert.DeserializeObject<ArticleResponse>(content).Article;
         }
+
+        public async Task<User> GetUser(string username)
+        {
+            var endpoint = $"http://localhost:5000/user/username?username={username}";
+            var response = await GetAsync(endpoint).ConfigureAwait(false);
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            return JsonConvert.DeserializeObject<UserResponse>(content).User;
+        }
     }
 }
